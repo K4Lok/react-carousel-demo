@@ -30,7 +30,7 @@ export default function Carousel({carousel, width, maxWidth="none", height}) {
         setTimeout(() => {
           setProgressBar(0);
           nextIndex();
-        }, 1000);
+        }, 500);
         clearInterval(progressBarInterval.current);
       }
     }, PER_MS);

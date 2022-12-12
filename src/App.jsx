@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="w-screen h-screen bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-indigo-200 via-red-200 to-yellow-100 flex flex-col justify-center space-y-2 items-center p-16">
+      <div className="w-screen h-screen flex flex-col justify-center space-y-2 items-center p-4 md:p-16">
         <Carousel carousel={carousel} width={'100%'} maxWidth={'1400px'} height={'100%'}/>
       </div>
     </div>
