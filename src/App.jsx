@@ -10,26 +10,22 @@ function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [progressBar, setProgressBar] = useState(0);
 
-  const effectCalled = useRef(false);
+  const progressBarInterval = useRef(false);
 
   useEffect(() => {
     activateProgressBar(4);
     console.log(currentIndex);
 
-    return () => clearInterval(window.counter);
+    return () => clearInterval(progressBarInterval.current);
   }, [currentIndex]);
 
-  // useEffect(() => {
-  //   console.log(progressBar);
-  // }, [progressBar]);
-
   const activateProgressBar = (duration) => {
-    if (effectCalled.current) return;
-    effectCalled.current = true;
+    clearInterval(progressBarInterval.current);
+
     setProgressBar(0);
     const PER_MS = 10;
     let count = 0;
-    const counter = setInterval(() => {
+    progressBarInterval.current = setInterval(() => {
       count += (1 / (duration * 1000 / PER_MS)) * 100;
       setProgressBar(count);
       // console.log(count);
@@ -37,9 +33,8 @@ function App() {
         setTimeout(() => {
           setProgressBar(0);
           nextIndex();
-          effectCalled.current = false;
         }, 1000);
-        clearInterval(counter);
+        clearInterval(progressBarInterval.current);
       }
     }, PER_MS);
   };
