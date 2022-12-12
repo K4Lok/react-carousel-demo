@@ -5,6 +5,7 @@ function App() {
     {id: 0, title: "提升競爭力", alt: "image 1", imgURL: "https://www.cpsumsu.org/static/image/slideshow/slideshow_p1.jpg"},
     {id: 1, title: "培養人才", alt: "image 2", imgURL: "https://www.cpsumsu.org/static/image/slideshow/slideshow_p2.jpg"},
     {id: 2, title: "軟硬實力", alt: "image 3", imgURL: "https://www.cpsumsu.org/static/image/slideshow/slideshow_p3.jpg"},
+    {id: 3, title: "勞逸結合", alt: "image 3", imgURL: "https://www.cpsumsu.org/static/image/slideshow/slideshow_p1.jpg"},
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -53,12 +54,23 @@ function App() {
   return (
     <div className="App">
       <div className="w-screen h-screen bg-slate-200 flex flex-col justify-center space-y-2 items-center px-12">
-        {/* Video Wrapper */}
-        <div className="relative h-2/3 aspect-video mx-auto overflow-hidden">
+        {/* Carousel Wrapper */}
+        <div className="relative h-3/4 w-full mx-auto overflow-hidden">
           {/* Image Linear Mask */}
           <div className="absolute inset-0 z-10 bg-black opacity-60"></div>
-          {/* Image Section*/}
-          <img key={carousel[currentIndex]?.id} className="object-cover h-full w-full animate-zoomIn" src={carousel[currentIndex]?.imgURL} alt="1" />
+          {/* Images Section*/}
+          <div className="w-full h-full transition duration-1000" style={{transform: `translateX(${-100 * currentIndex}%)`}}>
+            <ul className="flex w-full h-full">
+              {carousel.map(item => {
+                return (
+                  <li className="w-full h-full shrink-0">
+                    <img key={item.id} className="object-cover h-full w-full" src={item.imgURL} alt={item.alt} />
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+          
           {/* Progress Bar */}
           <div className="absolute w-full z-20 px-20 bottom-12 left-1/2 -translate-x-1/2">
           <ul className="flex w-full space-x-12">
