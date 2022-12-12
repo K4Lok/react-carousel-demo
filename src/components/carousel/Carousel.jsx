@@ -2,7 +2,7 @@ import React, {useState, useRef, useEffect} from 'react'
 import Gallery from './Gallery';
 import ProgressBars from './ProgressBars';
 
-export default function Carousel({carousel}) {
+export default function Carousel({carousel, width, maxWidth="none", height}) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [progressBar, setProgressBar] = useState(0);
 
@@ -49,7 +49,7 @@ export default function Carousel({carousel}) {
 
   return (<>
     {/* Carousel Wrapper */}
-    <div className="relative h-3/4 w-full mx-auto overflow-hidden">
+    <div className="relative mx-auto overflow-hidden" style={{width: width, height: height, maxWidth: maxWidth}}>
       {/* Image Linear Mask */}
       <div className="absolute inset-0 z-10 bg-black opacity-50"></div>
       {/* Images Section*/}

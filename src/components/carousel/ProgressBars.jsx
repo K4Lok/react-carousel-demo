@@ -8,7 +8,7 @@ export default function ProgressBars({carousel, currentIndex, progressBar, click
       <ul className="flex w-full space-x-12">
         {carousel.map(item => {
           return (
-            <ProgressBar item={item} currentIndex={currentIndex} progressBar={progressBar} clickHandler={clickHandler} />
+            <ProgressBar key={item.id} item={item} currentIndex={currentIndex} progressBar={progressBar} clickHandler={clickHandler} />
           )
         })}
       </ul>
