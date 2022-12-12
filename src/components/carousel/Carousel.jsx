@@ -49,7 +49,7 @@ export default function Carousel({carousel, width, maxWidth="none", height}) {
 
   return (<>
     {/* Carousel Wrapper */}
-    <div className="relative mx-auto overflow-hidden" style={{width: width, height: height, maxWidth: maxWidth}}>
+    <div className="relative mx-auto rounded-lg overflow-hidden z-20" style={{width: width, height: height, maxWidth: maxWidth}}>
       {/* Image Linear Mask */}
       <div className="absolute inset-0 z-10 bg-black opacity-50"></div>
       {/* Images Section*/}
